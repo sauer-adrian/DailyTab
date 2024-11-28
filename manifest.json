@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "permissions": [
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://wol.jw.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "name": "DailyTab",
+  "version": "1.2",
+  "description": "A custom new tab page that displays the Daily Text from jw.org.",
+  "author": "Adrian Sauer",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "48": "icons/relieved.png"
+  }
+}

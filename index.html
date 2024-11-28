@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DailyTab</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            /* Ensure no default margin */
+        }
+
+        #daily-text {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            position: absolute;
+            bottom: 20px;
+            /* Position 20px from the bottom */
+            left: 20px;
+            /* Position 20px from the left */
+            right: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.384);
+            /* Transparent background */
+            backdrop-filter: blur(30px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(5px);
+            /* For Safari */
+            color: #fff;
+            /* Text color */
+            font-size: 1.2em;
+            /* Optional: text size */
+            max-width: 100%;
+            /* Optional: control width */
+            text-align: start;
+            /* Align text to the start (left) */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="daily-text" class="frosted-glass">
+        <!-- Daily Text will be loaded here -->
+        Loading daily text...
+    </div>
+
+    <div class="modal fade" id="jsonModal" tabindex="-1" aria-labelledby="jsonModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jsonModalLabel">JSON Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="jsonModalBody">
+                    <!-- JSON content will be displayed here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="load.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
