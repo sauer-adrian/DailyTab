@@ -1,4 +1,20 @@
 
+# DailyTab
+
+**DailyTab** is a Chrome extension that replaces your new tab page with a personalized experience. It displays the daily text from [jw.org](https://wol.jw.org) alongside a stunning background image fetched from Pexels, providing both inspiration and beauty every time you open a new tab.
+
+----------
+
+## Features
+
+-   **Daily Text**: Automatically fetches and displays the daily text from [jw.org](https://wol.jw.org).
+-   **Dynamic Backgrounds**: Beautiful random backgrounds from curated collections on Pexels.
+-   **Minimalist Design**: Clean and simple interface for distraction-free inspiration.
+
+----------
+
+## Installation
+
 1.  **Clone or Download the Repository**:  
     Click on the green "Code" button on this GitHub repository and select **Download ZIP** or clone it using:
     
