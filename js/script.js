@@ -1,3 +1,4 @@
+//Yes, this is my API key. Please use your own. I was too lazy to set up something like a .env file.
 const API_KEY = 'DMjYMYhHUDLJuCAUxJmSYEflRUVtf6R5w3qS4UbvHWjsIsgbg1NMKae7';
 
 // Function to fetch and set a background image from a specific collection and page
