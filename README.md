@@ -43,7 +43,7 @@
 
 ## Screenshots
 
-_(Add a screenshot or mockup of the extension in action.)_
+_(Coming soon)_
 
 ----------
 
@@ -51,6 +51,7 @@ _(Add a screenshot or mockup of the extension in action.)_
 
 -   Requires an active internet connection to fetch the daily text and background images.
 -   If fetching fails, a fallback message is displayed.
+-   Clicked links redirect to https://wol.jw.org/ and show data there instead of opening a popup.
 
 ----------
 
