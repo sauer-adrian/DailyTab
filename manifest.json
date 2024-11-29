@@ -7,7 +7,7 @@
     "https://wol.jw.org/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "js/background.js"
   },
   "name": "DailyTab",
   "version": "1.2",
