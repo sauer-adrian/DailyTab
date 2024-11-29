@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    /* Ensure no default margin */
+}
+
+#daily-text {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 20px;
+    /* Position 20px from the bottom */
+    left: 20px;
+    /* Position 20px from the left */
+    right: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.384);
+    /* Transparent background */
+    backdrop-filter: blur(30px);
+    /* Apply blur effect */
+    -webkit-backdrop-filter: blur(5px);
+    /* For Safari */
+    color: #fff;
+    /* Text color */
+    font-size: 1.2em;
+    /* Optional: text size */
+    max-width: 100%;
+    /* Optional: control width */
+    text-align: start;
+    /* Align text to the start (left) */
+}
