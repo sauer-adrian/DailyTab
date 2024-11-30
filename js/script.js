@@ -1,10 +1,10 @@
-//Yes, this is my API key. Please use your own. I was too lazy to set up something like a .env file.
 const API_KEY = 'DMjYMYhHUDLJuCAUxJmSYEflRUVtf6R5w3qS4UbvHWjsIsgbg1NMKae7';
+const CACHE_KEY = 'backgroundImages';
+const FALLBACK_IMAGE_URL = 'https://images.pexels.com/photos/12734294/pexels-photo-12734294.jpeg'; // Replace with your own fallback image URL
 
-// Function to fetch and set a background image from a specific collection and page
-async function setBackgroundImage(page = 1, resolution = 'large') {
+// Function to fetch a new image and store it in localStorage
+async function fetchAndStoreImage(page = 1, resolution = 'large') {
   try {
-    // Pexels API endpoint with collection and pagination
     const response = await fetch(`https://api.pexels.com/v1/collections/0drf1np?per_page=1&page=${page}`, {
       headers: {
         Authorization: API_KEY
@@ -17,22 +17,49 @@ async function setBackgroundImage(page = 1, resolution = 'large') {
 
     const data = await response.json();
 
-    // Ensure we have at least one result
     if (data.media && data.media.length > 0) {
-      // Choose the first image in the media array (since per_page=1)
       const image = data.media[0];
-      
-      // Access the image URL based on the requested resolution
-      const imageUrl = image.src[resolution] || image.src['large'];  // Fallback to 'large' if the requested resolution is unavailable
+      const imageUrl = image.src[resolution] || image.src['large'];
 
-      // Set the image as the body's background
-      document.body.style.backgroundImage = `url(${imageUrl})`;
-    } else {
-      console.error('No images found for this collection on page', page);
+      // Store the image URL in localStorage
+      let imageCache = JSON.parse(localStorage.getItem(CACHE_KEY)) || [];
+      imageCache.push(imageUrl);
+
+      // Limit the cache size to 10 images
+      if (imageCache.length > 10) {
+        imageCache.shift(); // Remove the oldest image
+      }
+
+      localStorage.setItem(CACHE_KEY, JSON.stringify(imageCache));
     }
   } catch (error) {
-    console.error('Error fetching the background image:', error);
+    console.error('Error fetching and storing the image:', error);
   }
 }
-// Call the function with a specific page and preferred resolution
-setBackgroundImage(Math.floor(Math.random() * 12) + 1, 'landscape'); // You can change the page number (e.g., 3 or 5)
+
+// Function to set the background image from the cache
+function setBackgroundFromCache() {
+  const imageCache = JSON.parse(localStorage.getItem(CACHE_KEY)) || [];
+  if (imageCache.length > 0) {
+    const randomIndex = Math.floor(Math.random() * imageCache.length);
+    const imageUrl = imageCache[randomIndex];
+    document.body.style.backgroundImage = `url(${imageUrl})`;
+  } else {
+    // Use fallback image if no images are in the cache
+    console.warn('No images in cache. Using fallback image.');
+    document.body.style.backgroundImage = `url(${FALLBACK_IMAGE_URL})`;
+  }
+}
+
+// Initialize the background system
+async function initBackgroundSystem() {
+  // Set the background from the cache or fallback
+  setBackgroundFromCache();
+
+  // Fetch and store a new image in the background
+  const randomPage = Math.floor(Math.random() * 12) + 1; // Random page between 1 and 12
+  await fetchAndStoreImage(randomPage, 'original');
+}
+
+// Call the initialization function
+initBackgroundSystem();
