@@ -1,6 +1,6 @@
 const API_KEY = 'DMjYMYhHUDLJuCAUxJmSYEflRUVtf6R5w3qS4UbvHWjsIsgbg1NMKae7';
 const CACHE_KEY = 'backgroundImages';
-const FALLBACK_IMAGE_URL = 'https://images.pexels.com/photos/12734294/pexels-photo-12734294.jpeg'; // Replace with your own fallback image URL
+const FALLBACK_IMAGE_URL = 'https://images.pexels.com/photos/12734294/pexels-photo-12734294.jpeg';
 
 // Function to fetch a new image and store it in localStorage
 async function fetchAndStoreImage(page = 1, resolution = 'large') {
