@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
 
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Lexend", sans-serif;
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -11,7 +11,7 @@ body {
 }
 
 #daily-text {
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    /*text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); */
     position: absolute;
     bottom: 20px;
     /* Position 20px from the bottom */
@@ -27,10 +27,14 @@ body {
     /* For Safari */
     color: #fff;
     /* Text color */
-    font-size: 1.2em;
+    font-size: 1.4em !important;
     /* Optional: text size */
     max-width: 100%;
     /* Optional: control width */
     text-align: start;
     /* Align text to the start (left) */
+}
+
+a {
+    color: inherit; /* This makes the link inherit the color of its parent */
 }

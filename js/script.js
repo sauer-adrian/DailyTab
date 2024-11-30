@@ -57,7 +57,7 @@ async function initBackgroundSystem() {
   setBackgroundFromCache();
 
   // Fetch and store a new image in the background
-  const randomPage = Math.floor(Math.random() * 12) + 1; // Random page between 1 and 12
+  const randomPage = Math.floor(Math.random() * 13) + 1; // Random page between 1 and 12
   await fetchAndStoreImage(randomPage, 'original');
 }
 
