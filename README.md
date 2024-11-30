@@ -59,7 +59,7 @@
 
 ## Screenshots
 
-_(Coming soon)_
+![Preview of DailyTab](assets/DailyTab_preview.png)
 
 ----------
 
