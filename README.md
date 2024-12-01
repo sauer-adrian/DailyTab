@@ -17,19 +17,17 @@
 
 1.  **Clone or Download the Repository**:  
     Click on the green "Code" button on this GitHub repository and select **Download ZIP** or clone it using:
-    
-    bash
-    
+
     `git clone https://github.com/sauer-adrian/DailyTab.git` 
     
-2.  **Enable Developer Mode** in Chrome:
+3.  **Enable Developer Mode** in Chrome:
     
     -   Open Chrome and go to `chrome://extensions/`.
     -   Toggle the "Developer mode" switch in the top-right corner.
-3.  **Load the Extension**:
+4.  **Load the Extension**:
     
     -   Click **Load unpacked** and select the folder where you extracted or cloned this repository.
-4.  **Enjoy!**  
+5.  **Enjoy!**  
     Open a new tab, and you’ll see the DailyTab interface.
     
 
