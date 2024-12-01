@@ -20,8 +20,6 @@
     
     bash
     
-    Copy code
-    
     `git clone https://github.com/sauer-adrian/DailyTab.git` 
     
 2.  **Enable Developer Mode** in Chrome:
