@@ -38,3 +38,34 @@ body {
 a {
     color: inherit; /* This makes the link inherit the color of its parent */
 }
+
+.modal {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.384);
+    backdrop-filter: blur(30px);
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 15%;
+    box-shadow: 0 0 30px rgb(183 183 183 / 60%);
+}
+.modal-content {
+    padding: 20px;
+    overflow: auto;
+    color: #fff;
+    font-family: "Lexend", sans-serif !important;
+}
+.hidden {
+    display: none;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 0px;
+}

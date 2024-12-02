@@ -1,3 +1,5 @@
+
+//Don't blame me for putting my API-Key here...I'll do settings file...at some point.
 const API_KEY = 'DMjYMYhHUDLJuCAUxJmSYEflRUVtf6R5w3qS4UbvHWjsIsgbg1NMKae7';
 const CACHE_KEY = 'backgroundImages';
 const FALLBACK_IMAGE_URL = 'https://images.pexels.com/photos/12734294/pexels-photo-12734294.jpeg';
