@@ -46,7 +46,7 @@ function setBackgroundFromCache() {
     document.body.style.backgroundImage = `url(${imageUrl})`;
   } else {
     // Use fallback image if no images are in the cache
-    console.warn('No images in cache. Using fallback image.');
+    console.info('No images in cache. Using fallback image.');
     document.body.style.backgroundImage = `url(${FALLBACK_IMAGE_URL})`;
   }
 }
