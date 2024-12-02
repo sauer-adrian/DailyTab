@@ -38,7 +38,6 @@
 ### **Frontend**
 
 -   **HTML/CSS/JavaScript**: Core technologies for rendering and interactivity.
--   **Bootstrap**: For responsive and modern UI components.
 -   **Google Fonts**: Fonts for a polished and professional appearance.
 
 ### **APIs**
