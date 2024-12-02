@@ -32,6 +32,7 @@ body {
     /* Optional: control width */
     text-align: start;
     /* Align text to the start (left) */
+    border-radius: 30px;
 }
 
 a {
