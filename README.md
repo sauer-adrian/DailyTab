@@ -16,9 +16,9 @@
 ## Installation
 
 1.  **Clone or Download the Repository**:  
-    Click on the green "Code" button on this GitHub repository and select **Download ZIP** or clone it using:
+    -   Click on the "Code" button on this GitHub repository and select **Download ZIP** or clone it using:
 
-    `git clone https://github.com/sauer-adrian/DailyTab.git` 
+        `git clone https://github.com/sauer-adrian/DailyTab.git` 
     
 3.  **Enable Developer Mode** in Chrome:
     
