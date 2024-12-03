@@ -1,8 +1,7 @@
 chrome.runtime.sendMessage({ action: "getData" }, (response) => {
   if (chrome.runtime.lastError) {
-    console.error('Message error:', chrome.runtime.lastError.message);
-    document.getElementById('daily-text').textContent =
-      'Failed to fetch data. Please try again later.';
+    console.error("Message error:", chrome.runtime.lastError.message);
+    document.getElementById("daily-text").textContent = "Failed to fetch data. Please try again later.";
     return;
   }
 
@@ -20,9 +19,10 @@ chrome.runtime.sendMessage({ action: "getData" }, (response) => {
         const doc = parser.parseFromString(parsedContent, "text/html");
 
         // Modify all href attributes
-        doc.querySelectorAll("a[href]").forEach(anchor => {
+        doc.querySelectorAll("a[href]").forEach((anchor) => {
           const href = anchor.getAttribute("href");
-          if (href.startsWith("/")) { // Only modify if it starts with "/"
+          if (href.startsWith("/")) {
+            // Only modify if it starts with "/"
             anchor.setAttribute("href", prefix + href);
           }
         });
@@ -31,101 +31,148 @@ chrome.runtime.sendMessage({ action: "getData" }, (response) => {
         const updatedContent = doc.body.innerHTML;
 
         // Display the updated content in the DOM
-        document.getElementById('daily-text').innerHTML = updatedContent;
+        document.getElementById("daily-text").innerHTML = updatedContent;
       } else {
-        document.getElementById('daily-text').textContent = 'No content available.';
+        document.getElementById("daily-text").textContent = "No content available.";
       }
     } catch (error) {
-      console.error('Error parsing JSON:', error.message);
-      document.getElementById('daily-text').textContent =
-        'Failed to parse data. Please check console for details.';
+      console.error("Error parsing JSON:", error.message);
+      document.getElementById("daily-text").textContent = "Failed to parse data. Please check console for details.";
     }
   } else {
-    console.error('Fetch error:', response.error);
-    document.getElementById('daily-text').textContent =
-      'Error loading daily text. Please check console for details.';
+    console.error("Fetch error:", response.error);
+    document.getElementById("daily-text").textContent = "Error loading daily text. Please check console for details.";
   }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const dailyTextContainer = document.getElementById('daily-text');
-  const modal = document.getElementById('modal');
-  const modalContent = document.getElementById('modal-content');
-  const closeModal = document.getElementById('close-modal');
+  const dailyTextContainer = document.getElementById("daily-text");
+  const modal = document.getElementById("modal");
+  const modalContent = document.getElementById("modal-content");
+  const closeModal = document.getElementById("close-modal");
 
   // Close modal functionality
   closeModal.addEventListener("click", () => {
-      modal.classList.add('hidden');
+    modal.classList.add("hidden");
   });
 
   // Delegate click events to links inside the daily text container
   dailyTextContainer.addEventListener("click", async (event) => {
-      // Ensure the target is the closest <a> tag, if present
-      const target = event.target.closest('a');
+    // Ensure the target is the closest <a> tag, if present
+    const target = event.target.closest("a");
 
-      if (target && target.tagName === "A") {
-          event.preventDefault(); // Prevent default link behavior
+    if (target && target.tagName === "A") {
+      event.preventDefault(); // Prevent default link behavior
 
-          const url = target.href;
+      const url = target.href;
 
-          try {
-              const response = await fetch(url);
-              if (!response.ok) {
-                  throw new Error(`HTTP error! Status: ${response.status}`);
-              }
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-              const json = await response.json();
-              const { caption, content } = json.items[0];
+        const json = await response.json();
+        const { caption, content } = json.items[0];
 
-              // Clear previous content
-              modalContent.innerHTML = '';
+        // Clear previous content
+        modalContent.innerHTML = "";
 
-              // Create and append caption element
-              const captionElement = document.createElement('h2');
-              captionElement.textContent = caption;
-              modalContent.appendChild(captionElement);
+        // Create and append caption element
+        const captionElement = document.createElement("h2");
+        captionElement.textContent = caption;
+        modalContent.appendChild(captionElement);
 
-              // Remove <a> tags from the content
-              const tempDiv = document.createElement('div');
-              tempDiv.innerHTML = content; // Parse the HTML content
-              const anchorTags = tempDiv.querySelectorAll('a');
-              anchorTags.forEach(anchor => anchor.remove()); // Remove all <a> tags
+        // Remove <a> tags from the content
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = content; // Parse the HTML content
+        const anchorTags = tempDiv.querySelectorAll("a");
+        anchorTags.forEach((anchor) => anchor.remove()); // Remove all <a> tags
 
-              // Extract text content directly from the modified content
-              const textContent = tempDiv.textContent.trim(); // Get the plain text and trim it
+        // Extract text content directly from the modified content
+        const textContent = tempDiv.textContent.trim(); // Get the plain text and trim it
 
-              // Create a container for the text-only content
-              const textContainer = document.createElement('div');
-              textContainer.textContent = textContent; // Only the text
-              modalContent.appendChild(textContainer);
+        // Create a container for the text-only content
+        const textContainer = document.createElement("div");
+        textContainer.textContent = textContent; // Only the text
+        modalContent.appendChild(textContainer);
 
-              // Temporarily make the modal visible to measure dimensions
-              modal.classList.remove('hidden');
-              modal.style.visibility = 'hidden'; // Hide from user while measuring
-              modal.style.position = 'absolute'; // Ensure position adjustment works
+        // Temporarily make the modal visible to measure dimensions
+        modal.classList.remove("hidden");
+        modal.style.visibility = "hidden"; // Hide from user while measuring
+        modal.style.position = "absolute"; // Ensure position adjustment works
 
-              // Get the modal's dimensions
-              const modalRect = modal.getBoundingClientRect();
-              const modalHeight = modalRect.height;
-              const modalWidth = modalRect.width;
+        // Get the modal's dimensions
+        const modalRect = modal.getBoundingClientRect();
+        const modalHeight = modalRect.height;
+        const modalWidth = modalRect.width;
 
-              // Calculate position based on mouse click
-              const offsetX = 10; // Horizontal offset
-              const offsetY = 10; // Vertical offset
-              const mouseX = event.clientX;
-              const mouseY = event.clientY;
+        // Calculate position based on mouse click
+        const offsetX = 10; // Horizontal offset
+        const offsetY = 10; // Vertical offset
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
 
-              // Adjust position so bottom-left corner aligns to top-right of the click
-              modal.style.left = `${mouseX + offsetX}px`;
-              modal.style.top = `${mouseY - modalHeight - offsetY}px`;
+        // Adjust position so bottom-left corner aligns to top-right of the click
+        modal.style.left = `${mouseX + offsetX}px`;
+        modal.style.top = `${mouseY - modalHeight - offsetY}px`;
 
-              // Restore visibility
-              modal.style.visibility = 'visible';
-          } catch (error) {
-              console.error("Failed to fetch JSON:", error);
-              modalContent.textContent = `Error: ${error.message}`;
-              modal.classList.remove('hidden');
-          }
+        // Restore visibility
+        modal.style.visibility = "visible";
+      } catch (error) {
+        console.error("Failed to fetch JSON:", error);
+        modalContent.textContent = `Error: ${error.message}`;
+        modal.classList.remove("hidden");
       }
+    }
   });
+
+  // Add drag-and-drop functionality
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  // Start dragging
+  modal.addEventListener("mousedown", (e) => {
+    isDragging = true;
+
+    // Calculate offsets
+    offsetX = e.clientX - modal.offsetLeft;
+    offsetY = e.clientY - modal.offsetTop;
+
+    // Prevent text selection
+    document.body.style.userSelect = "none";
+
+    document.addEventListener("mousemove", onDrag);
+    document.addEventListener("mouseup", stopDrag);
+  });
+
+  function onDrag(e) {
+    if (isDragging) {
+      const spacing = 20; // Define the spacing around the edges
+
+      let newX = e.clientX - offsetX;
+      let newY = e.clientY - offsetY;
+
+      // Prevent dragging outside the window with 20px spacing
+      const maxX = window.innerWidth - modal.offsetWidth - spacing;
+      const maxY = window.innerHeight - modal.offsetHeight - spacing;
+
+      // Constrain the modal within the bounds of the window
+      newX = Math.max(spacing, Math.min(newX, maxX));
+      newY = Math.max(spacing, Math.min(newY, maxY));
+
+      modal.style.left = newX + "px";
+      modal.style.top = newY + "px";
+    }
+  }
+
+  function stopDrag() {
+    isDragging = false;
+
+    // Re-enable text selection
+    document.body.style.userSelect = "";
+
+    document.removeEventListener("mousemove", onDrag);
+    document.removeEventListener("mouseup", stopDrag);
+  }
 });

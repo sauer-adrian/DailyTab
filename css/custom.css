@@ -7,36 +7,27 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
+    user-select: auto;
 }
 
 #daily-text {
-    /*text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); */
     position: absolute;
     bottom: 20px;
-    /* Position 20px from the bottom */
     left: 20px;
-    /* Position 20px from the left */
     right: 40%;
     padding: 20px;
     background: rgba(0, 0, 0, 0.384);
-    /* Transparent background */
     backdrop-filter: blur(30px);
-    /* Apply blur effect */
-    -webkit-backdrop-filter: blur(5px);
-    /* For Safari */
+    -webkit-backdrop-filter: blur(30px);
     color: #fff;
-    /* Text color */
     font-size: 1.4em !important;
-    /* Optional: text size */
     max-width: 100%;
-    /* Optional: control width */
     text-align: start;
-    /* Align text to the start (left) */
-    border-radius: 30px;
+    border-radius: 16px;
 }
 
 a {
-    color: inherit; /* This makes the link inherit the color of its parent */
+    color: inherit;
 }
 
 .modal {
@@ -45,15 +36,15 @@ a {
     backdrop-filter: blur(30px);
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
+    border-radius: 16px;
     width: 15%;
     box-shadow: 0 0 30px rgb(183 183 183 / 60%);
+    position: fixed;
 }
 .modal-content {
     padding: 20px;
     overflow: auto;
     color: #fff;
-    font-family: "Lexend", sans-serif !important;
 }
 .hidden {
     display: none;
@@ -64,6 +55,7 @@ a {
     right: 15px;
     font-size: 20px;
     cursor: pointer;
+    line-height: 1;
 }
 
 h2 {
